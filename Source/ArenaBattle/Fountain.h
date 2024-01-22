@@ -2,7 +2,9 @@
 
 #pragma once
 
-#include "EngineMinimal.h" // CoreMinimal.h보다 더 많은 기능을 담고 있다
+#include "ArenaBattle.h"
+#include "GameFramework/RotatingMovementComponent.h"
+#include "GameFramework/RotatingMovementComponent.h"
 #include "GameFramework/Actor.h"
 #include "Fountain.generated.h" // 클래스이름.generated.h는 가장 아래에 있어야 한다.
 
@@ -37,6 +39,15 @@ public:
 	UPROPERTY(VisibleAnywhere)
 	UParticleSystemComponent *Splash;
 
+	UPROPERTY(VisibleAnywhere)
+	URotatingMovementComponent* Movement;
+
 	UPROPERTY(EditAnywhere, Category=ID) // 디테일 패널에서 볼 수 있고 편집도 가능하다
 	int32 ID;
+
+private:
+	// "Meta=(AllowPrivateAccess = true)" private 변수여도 에디터에서 값 편집이 가능하다.
+	// 데이터를 은닉하면서 에디터에서 편집이 가능하다!
+	UPROPERTY(EditAnywhere, Category=Stat, Meta=(AllowPrivateAccess = true))
+	float RotateSpeed;
 };
